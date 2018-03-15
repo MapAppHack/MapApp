@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "840784637647",
+    "firebase_url": "https://mapapphack0318-651d8.firebaseio.com",
+    "project_id": "mapapphack0318-651d8",
+    "storage_bucket": "mapapphack0318-651d8.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:840784637647:android:27cc3acac4095199",
+        "android_client_info": {
+          "package_name": "com.hackathon2018.androidacademytlv.mapapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "840784637647-ca308ua2tjfro2jgboleonhp6frq4ce5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAuMrcS4BIEwDpF5kM0SSRvTRS0-Bittnk"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
