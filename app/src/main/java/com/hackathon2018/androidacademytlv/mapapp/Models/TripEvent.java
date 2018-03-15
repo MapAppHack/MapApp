@@ -22,8 +22,16 @@ public class TripEvent {
     public String info;
     public String infoLink;
 
-    public TripEvent(){
+    public TripEvent() {
+    }
 
+    public TripEvent(String title, long startTime, long endTime, double startLatitude, double startLongitude){
+
+        this.title = title;
+        start = startTime;
+        end = endTime;
+        this.startLatitude = startLatitude;
+        this.startLongitude = startLongitude;
     }
 
     public TripEvent(String id, String title, String trip, double startLatitude, double startLongitude, double endLatitude, double endLongitude,
