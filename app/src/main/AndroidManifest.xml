@@ -12,9 +12,9 @@
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
-        <meta-data
+        <!--meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyDgo90xr3hm1LMnzMNPaxGVF8qNHkb6Uso"/>
+            android:value="AIzaSyDgo90xr3hm1LMnzMNPaxGVF8qNHkb6Uso"/-->
 
 
         <activity
@@ -25,14 +25,13 @@
             </intent-filter>
         </activity>
 
-        <m!--eta-data
+        <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="@string/google_maps_key" /-->
+            android:value="@string/google_maps_key" />
 
         <activity android:name=".TripListActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
         <activity
@@ -46,6 +45,7 @@
             android:label="@string/create_event_caption">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER"/>
 
             </intent-filter>
         </activity>
