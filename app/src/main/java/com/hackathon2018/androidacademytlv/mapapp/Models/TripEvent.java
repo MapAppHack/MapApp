@@ -2,11 +2,13 @@ package com.hackathon2018.androidacademytlv.mapapp.Models;
 
 import com.google.firebase.database.Exclude;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
 
-public class TripEvent {
+public class TripEvent implements Serializable {
+    public static final String EXTRA_KEY = "extraKey";
     public String id;
     public String title;
     public String trip;
