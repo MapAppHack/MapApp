@@ -6,6 +6,8 @@ import android.graphics.Color;
 import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.TextView;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -14,6 +16,7 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.LatLngBounds;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.PolylineOptions;
 import com.google.maps.android.ui.IconGenerator;
@@ -44,12 +47,47 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
 
+        setInfoWindowAdapter(mMap);
         Intent intentThatStartedThisActivity = getIntent();
 
         if (intentThatStartedThisActivity.hasExtra(Trip.EXTRA_KEY)) {
             mTrip =  (Trip) intentThatStartedThisActivity.getSerializableExtra(Trip.EXTRA_KEY);
             getTripsEvents(mTrip);
         }
+    }
+
+    private void setInfoWindowAdapter(GoogleMap mMap) {
+        mMap.setInfoWindowAdapter(new GoogleMap.InfoWindowAdapter() {
+
+            @Override
+            public View getInfoWindow(Marker marker) {
+                return null;
+            }
+
+            @Override
+            public View getInfoContents(Marker marker) {
+                // Getting view from the layout file info_window_layout
+                View v = getLayoutInflater().inflate(R.layout.event_custom_view, null);
+
+                // Getting the position from the marker
+                LatLng latLng = marker.getPosition();
+
+                // Getting reference to the TextView to set latitude
+                TextView tvLat = (TextView) v.findViewById(R.id.tv_lat);
+
+                // Getting reference to the TextView to set longitude
+                TextView tvLng = (TextView) v.findViewById(R.id.tv_lng);
+
+                // Setting the latitude
+                tvLat.setText("Latitude:" + latLng.latitude);
+
+                // Setting the longitude
+                tvLng.setText("Longitude:"+ latLng.longitude);
+
+                // Returning the view containing InfoWindow contents
+                return v;
+            }
+        });
     }
 
     private void drawEventsOnMap(TripEvent event) {
@@ -66,9 +104,7 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
 
         MarkerOptions startMarker = new MarkerOptions()
                 .position(markerStartPoint)
-//                .title(event.title)
-                .title("Title : " + event.title +
-                        "\n Start Time : " + event.start)
+                .title(event.title)
                 .icon(BitmapDescriptorFactory.fromBitmap(icon));
 
         mMap.addMarker(startMarker);
