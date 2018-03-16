@@ -22,6 +22,10 @@ public class Trip implements Serializable {
 
     }
 
+    public  Trip(String id)
+    {
+        this.id=id;
+    }
     public Trip(String id, String title, double budget, String currency, String author,long start)
     {
         this.id = id;

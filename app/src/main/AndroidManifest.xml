@@ -49,6 +49,14 @@
 
             </intent-filter>
         </activity>
+
+        <activity android:name=".CreateTripActivity" android:label="@string/create_trip_caption">
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>
