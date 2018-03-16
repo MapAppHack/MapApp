@@ -22,12 +22,9 @@ import com.hackathon2018.androidacademytlv.mapapp.Data.TripsDataLayer;
 import com.hackathon2018.androidacademytlv.mapapp.Models.Trip;
 import com.hackathon2018.androidacademytlv.mapapp.Models.TripEvent;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class MapActivity extends FragmentActivity implements OnMapReadyCallback {
     private GoogleMap mMap;
-    private Trip mEvent;
+    private Trip mTrip;
     private int mCounter = 1;
     private PolylineOptions mPolylineOptions = new PolylineOptions().width(5).color(Color.RED);
     LatLngBounds.Builder boundsBuilder = new LatLngBounds.Builder();
@@ -50,8 +47,8 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
         Intent intentThatStartedThisActivity = getIntent();
 
         if (intentThatStartedThisActivity.hasExtra(Trip.EXTRA_KEY)) {
-            mEvent =  (Trip) intentThatStartedThisActivity.getSerializableExtra(Trip.EXTRA_KEY);
-            getTripsEvents(mEvent);
+            mTrip =  (Trip) intentThatStartedThisActivity.getSerializableExtra(Trip.EXTRA_KEY);
+            getTripsEvents(mTrip);
         }
     }
 
@@ -69,7 +66,9 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
 
         MarkerOptions startMarker = new MarkerOptions()
                 .position(markerStartPoint)
-                .title(event.title)
+//                .title(event.title)
+                .title("Title : " + event.title +
+                        "\n Start Time : " + event.start)
                 .icon(BitmapDescriptorFactory.fromBitmap(icon));
 
         mMap.addMarker(startMarker);
@@ -105,14 +104,5 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
                 drawEventsOnMap(item);
             }
         });
-
-//
-//
-//        dataLayer.getTripsByUser("user1", new IItemAddedCallback<Trip>() {
-//            @Override
-//            public void onItemAdded(Trip item) {
-//                return;
-//            }
-//        });
     }
 }
