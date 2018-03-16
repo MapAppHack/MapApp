@@ -1,16 +1,20 @@
 package com.hackathon2018.androidacademytlv.mapapp;
 
 import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.support.design.widget.FloatingActionButton;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.DatePicker;
 import android.widget.EditText;
 
 import com.hackathon2018.androidacademytlv.mapapp.Data.TripsDataLayer;
 import com.hackathon2018.androidacademytlv.mapapp.Models.Trip;
 
+import java.util.Currency;
 import java.util.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -26,6 +30,16 @@ public class CreateTripActivity extends AppCompatActivity {
         //final Calendar myCalendar = Calendar.getInstance();
 
         //EditText edittext= (EditText) findViewById(R.id.create_trip_start);
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_dropdown_item_1line);
+        for(Currency currency: Currency.getAvailableCurrencies())
+        {
+            adapter.add(currency.getDisplayName());
+        }
+        AutoCompleteTextView autoCompleteTextView = findViewById(R.id.create_trip_currency);
+
+        autoCompleteTextView.setAdapter(adapter);
+
 
         final Calendar myCalendar = Calendar.getInstance();
         final SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
@@ -94,6 +108,14 @@ public class CreateTripActivity extends AppCompatActivity {
 
         TripsDataLayer.getInstance().createTrip(trip);
 
+        openCreateEvent(trip.id);
+
+    }
+
+    private void openCreateEvent(String id) {
+        Intent intent = new Intent(this, CreateEventActivity.class);
+        intent.putExtra("tripId", id);
+        startActivity(intent);
     }
 
     private boolean validateData() {
