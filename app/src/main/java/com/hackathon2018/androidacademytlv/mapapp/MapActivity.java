@@ -25,9 +25,14 @@ import com.hackathon2018.androidacademytlv.mapapp.Data.TripsDataLayer;
 import com.hackathon2018.androidacademytlv.mapapp.Models.Trip;
 import com.hackathon2018.androidacademytlv.mapapp.Models.TripEvent;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 public class MapActivity extends FragmentActivity implements OnMapReadyCallback {
     private GoogleMap mMap;
     private Trip mTrip;
+    private Map<String, TripEvent> mTripEvents;
     private int mCounter = 1;
     private PolylineOptions mPolylineOptions = new PolylineOptions().width(5).color(Color.RED);
     LatLngBounds.Builder boundsBuilder = new LatLngBounds.Builder();
@@ -46,8 +51,8 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
-
         setInfoWindowAdapter(mMap);
+
         Intent intentThatStartedThisActivity = getIntent();
 
         if (intentThatStartedThisActivity.hasExtra(Trip.EXTRA_KEY)) {
@@ -57,6 +62,7 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
     }
 
     private void setInfoWindowAdapter(GoogleMap mMap) {
+
         mMap.setInfoWindowAdapter(new GoogleMap.InfoWindowAdapter() {
 
             @Override
@@ -66,23 +72,30 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
 
             @Override
             public View getInfoContents(Marker marker) {
+
+                TripEvent tripEvent = mTripEvents.get(marker.getSnippet());
                 // Getting view from the layout file info_window_layout
                 View v = getLayoutInflater().inflate(R.layout.event_custom_view, null);
 
-                // Getting the position from the marker
-                LatLng latLng = marker.getPosition();
+                TextView tvTitle = (TextView) v.findViewById(R.id.tv_title);
 
-                // Getting reference to the TextView to set latitude
-                TextView tvLat = (TextView) v.findViewById(R.id.tv_lat);
+                TextView tvStart = (TextView) v.findViewById(R.id.tv_start);
 
-                // Getting reference to the TextView to set longitude
-                TextView tvLng = (TextView) v.findViewById(R.id.tv_lng);
+                TextView tvEnd = (TextView) v.findViewById(R.id.tv_end);
 
-                // Setting the latitude
-                tvLat.setText("Latitude:" + latLng.latitude);
+                TextView tvInfo = (TextView) v.findViewById(R.id.tv_info);
 
-                // Setting the longitude
-                tvLng.setText("Longitude:"+ latLng.longitude);
+                TextView tvContact = (TextView) v.findViewById(R.id.tv_contact);
+
+                tvTitle.setText("Event Name  :" + tripEvent.title);
+
+                tvStart.setText("Start Time  :"+ tripEvent.start);
+
+                tvEnd.setText("End Time  :"+ tripEvent.end);
+
+                tvInfo.setText("Info  :"+ tripEvent.info);
+
+                tvContact.setText("Contact  :"+ tripEvent.contact);
 
                 // Returning the view containing InfoWindow contents
                 return v;
@@ -91,9 +104,6 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
     }
 
     private void drawEventsOnMap(TripEvent event) {
-
-
-
 
         LatLng markerStartPoint = new LatLng(event.startLatitude, event.startLongitude);
         LatLng markerEndPoint = new LatLng(event.endLatitude, event.endLongitude);
@@ -105,6 +115,7 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
         MarkerOptions startMarker = new MarkerOptions()
                 .position(markerStartPoint)
                 .title(event.title)
+                .snippet(event.id)
                 .icon(BitmapDescriptorFactory.fromBitmap(icon));
 
         mMap.addMarker(startMarker);
@@ -131,12 +142,13 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
 
     private void getTripsEvents(Trip trip) {
 
-
+        mTripEvents = new HashMap<>();
         final TripsDataLayer dataLayer = TripsDataLayer.getInstance();
         String tripId = trip.id;
         dataLayer.getEventsByTrips(tripId, new IItemAddedCallback<TripEvent>() {
             @Override
             public void onItemAdded(TripEvent item) {
+                mTripEvents.put(item.id, item);
                 drawEventsOnMap(item);
             }
         });
