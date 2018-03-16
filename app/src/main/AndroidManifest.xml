@@ -12,9 +12,9 @@
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
-        <meta-data
+        <!--meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyDgo90xr3hm1LMnzMNPaxGVF8qNHkb6Uso"/>
+            android:value="AIzaSyDgo90xr3hm1LMnzMNPaxGVF8qNHkb6Uso"/-->
 
 
         <activity
@@ -25,9 +25,9 @@
             </intent-filter>
         </activity>
 
-        <!--meta-data
+        <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="@string/google_maps_key" /-->
+            android:value="@string/google_maps_key" />
 
         <activity android:name=".TripListActivity">
             <intent-filter>
