@@ -7,8 +7,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 
-public class TripEvent implements Serializable {
-    public static final String EXTRA_KEY = "extraKey";
+public class TripEvent {
     public String id;
     public String title;
     public String trip;
