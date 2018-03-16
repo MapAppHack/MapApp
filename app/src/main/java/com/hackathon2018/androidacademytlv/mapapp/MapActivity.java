@@ -3,6 +3,7 @@ package com.hackathon2018.androidacademytlv.mapapp;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Color;
+import android.icu.text.DateFormat;
 import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
@@ -25,6 +26,8 @@ import com.hackathon2018.androidacademytlv.mapapp.Data.TripsDataLayer;
 import com.hackathon2018.androidacademytlv.mapapp.Models.Trip;
 import com.hackathon2018.androidacademytlv.mapapp.Models.TripEvent;
 
+import java.sql.Date;
+import java.text.SimpleDateFormat;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -89,9 +92,9 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
 
                 tvTitle.setText("Event Name  :" + tripEvent.title);
 
-                tvStart.setText("Start Time  :"+ tripEvent.start);
+                tvStart.setText("Start Time  :"+ getDateTime(tripEvent.start));
 
-                tvEnd.setText("End Time  :"+ tripEvent.end);
+                tvEnd.setText("End Time  :"+ getDateTime(tripEvent.end));
 
                 tvInfo.setText("Info  :"+ tripEvent.info);
 
@@ -152,5 +155,10 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
                 drawEventsOnMap(item);
             }
         });
+    }
+
+    public String getDateTime(long timestamp){
+        String date = new java.text.SimpleDateFormat("dd/MM/yyyy HH:mm:ss").format(new java.util.Date (timestamp));
+        return date;
     }
 }
