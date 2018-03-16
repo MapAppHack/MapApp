@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.hackathon2018.androidacademytlv.mapapp.CreateTripActivity">
-
+    tools:context="com.hackathon2018.androidacademytlv.mapapp.CreateEventActivity">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -19,14 +18,14 @@
             android:orientation="vertical"
             android:background="@color/create_trip_edit_background"
             >
-            <TextView
+            <!--TextView
                 android:layout_width="@dimen/create_trip_text_width"
                 android:layout_height="wrap_content"
-                android:text="@string/create_trip_new_trip"
+                android:text="@string/create_trip_new_event"
                 android:paddingLeft="@dimen/create_trip_edit_padding"
                 android:paddingVertical="@dimen/create_trip_new_trip_padding"
                 android:textSize="@dimen/create_trip_caption_text_size"
-                android:textStyle="bold"/>
+                android:textStyle="bold"/-->
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -35,7 +34,7 @@
                 <TextView
                     android:layout_width="@dimen/create_trip_text_width"
                     android:layout_height="match_parent"
-                    android:text="@string/trip_name"
+                    android:text="@string/event_name"
                     android:gravity="center_vertical"
                     android:paddingLeft="@dimen/create_trip_edit_padding"
                     android:textSize="@dimen/create_trip_text_size"/>
@@ -43,7 +42,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/create_trip_edit_height"
                     android:paddingHorizontal="@dimen/create_trip_edit_padding"
-                    android:id="@+id/create_trip_title"
+                    android:id="@+id/create_event_title"
                     android:maxLines="1"
                     android:inputType="text"
                     android:textSize="@dimen/create_trip_text_size"
@@ -56,19 +55,18 @@
                 <TextView
                     android:layout_width="@dimen/create_trip_text_width"
                     android:layout_height="match_parent"
-                    android:text="@string/start_date"
+                    android:text="@string/starts_at"
                     android:gravity="center_vertical"
                     android:paddingLeft="@dimen/create_trip_edit_padding"
                     android:textSize="@dimen/create_trip_text_size"/>
                 <EditText
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/create_trip_edit_height"
-                android:paddingHorizontal="@dimen/create_trip_edit_padding"
-                android:id="@+id/create_trip_start"
-                android:maxLines="1"
-                android:inputType="none"
-                android:clickable="true"
-                />
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/create_trip_edit_height"
+                    android:paddingHorizontal="@dimen/create_trip_edit_padding"
+                    android:id="@+id/create_event_start"
+                    android:maxLines="1"
+                    android:clickable="true"
+                    />
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
@@ -77,18 +75,78 @@
                 <TextView
                     android:layout_width="@dimen/create_trip_text_width"
                     android:layout_height="match_parent"
-                    android:text="@string/budget"
+                    android:text="@string/end_time"
                     android:gravity="center_vertical"
                     android:paddingLeft="@dimen/create_trip_edit_padding"
                     android:textSize="@dimen/create_trip_text_size"/>
                 <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/create_trip_edit_height"
+                    android:paddingHorizontal="@dimen/create_trip_edit_padding"
+                    android:id="@+id/create_event_end"
+                    android:maxLines="1"
+                    android:clickable="true"
+                    />
+            </LinearLayout>
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/create_trip_edit_height"
-                android:paddingHorizontal="@dimen/create_trip_edit_padding"
-                android:id="@+id/create_trip_budget"
-                android:maxLines="1"
-                android:inputType="numberDecimal"
-                />
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="@dimen/create_trip_text_width"
+                    android:layout_height="match_parent"
+                    android:text="@string/from"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="@dimen/create_trip_edit_padding"
+                    android:textSize="@dimen/create_trip_text_size"/>
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/create_trip_edit_height"
+                    android:paddingHorizontal="@dimen/create_trip_edit_padding"
+                    android:id="@+id/create_event_start_point"
+                    android:maxLines="1"
+                    android:inputType="text"
+                    />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/create_trip_edit_height"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="@dimen/create_trip_text_width"
+                    android:layout_height="match_parent"
+                    android:text="@string/to"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="@dimen/create_trip_edit_padding"
+                    android:textSize="@dimen/create_trip_text_size"/>
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/create_trip_edit_height"
+                    android:paddingHorizontal="@dimen/create_trip_edit_padding"
+                    android:id="@+id/create_event_end_point"
+                    android:maxLines="1"
+                    android:inputType="text"
+                    />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/create_trip_edit_height"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="@dimen/create_trip_text_width"
+                    android:layout_height="match_parent"
+                    android:text="@string/cost"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="@dimen/create_trip_edit_padding"
+                    android:textSize="@dimen/create_trip_text_size"/>
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/create_trip_edit_height"
+                    android:paddingHorizontal="@dimen/create_trip_edit_padding"
+                    android:id="@+id/create_event_cost"
+                    android:maxLines="1"
+                    android:inputType="numberDecimal"
+                    />
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
@@ -102,14 +160,15 @@
                     android:paddingLeft="@dimen/create_trip_edit_padding"
                     android:textSize="@dimen/create_trip_text_size"/>
                 <AutoCompleteTextView
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/create_trip_edit_height"
-                android:paddingHorizontal="@dimen/create_trip_edit_padding"
-                android:id="@+id/create_trip_currency"
-                android:maxLines="1"
-                android:inputType="text"
-                />
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/create_trip_edit_height"
+                    android:paddingHorizontal="@dimen/create_trip_edit_padding"
+                    android:id="@+id/create_event_currency"
+                    android:maxLines="1"
+                    android:inputType="text"
+                    />
             </LinearLayout>
+
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -121,8 +180,9 @@
                 android:paddingTop="@dimen/create_trip_button_vertical_padding"
                 android:paddingBottom="@dimen/create_trip_button_vertical_padding"
                 android:onClick="onSaveClick"
-                />
+                 />
         </LinearLayout>
 
     </LinearLayout>
+
 </android.support.constraint.ConstraintLayout>

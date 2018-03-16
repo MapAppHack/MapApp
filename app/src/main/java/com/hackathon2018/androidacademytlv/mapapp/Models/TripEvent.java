@@ -11,8 +11,10 @@ public class TripEvent {
     public String id;
     public String title;
     public String trip;
+    public String startText;
     public double startLatitude;
     public double startLongitude;
+    public  String endText;
     public double endLatitude;
     public double endLongitude;
     public long start;
@@ -35,13 +37,15 @@ public class TripEvent {
         this.startLongitude = startLongitude;
     }
 
-    public TripEvent(String id, String title, String trip, double startLatitude, double startLongitude, double endLatitude, double endLongitude,
+    public TripEvent(String id, String title, String trip, String startText, double startLatitude, double startLongitude, String endText, double endLatitude, double endLongitude,
                      long start, long end, String currency, double cost, String contact, String info, String infoLink){
         this.id = id;
         this.title = title;
         this.trip = trip;
+        this.startText = startText;
         this.startLatitude = startLatitude;
         this.startLongitude = startLongitude;
+        this.endText = endText;
         this.endLatitude = endLatitude;
         this.endLongitude = endLongitude;
         this.start = start;
@@ -66,8 +70,10 @@ public class TripEvent {
         result.put("info", info);
         result.put("infoLink", infoLink);
         result.put("trip", trip);
+        result.put("startText", startText);
         result.put("startLatitude", startLatitude);
         result.put("startLongitude", startLongitude);
+        result.put("endText", endText);
         result.put("endLatitude", endLatitude);
         result.put("endLongitude", endLongitude);
         return result;
