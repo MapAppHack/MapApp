@@ -1,4 +1,4 @@
-<resources>
+<resources  >
     <string name="app_name">MapApp</string>
     <string name="trip_map">Trip Map</string>
     <string name="trip_name">Trip name:</string>
@@ -8,4 +8,13 @@
     <string name="create_trip_caption">Create trip</string>
     <string name="create_trip_save">SAVE</string>
     <string name="create_trip_new_trip">New trip</string>
+    <string name="title_activity_create_event">Create Event</string>
+    <string name="create_event_caption">Create event</string>
+    <string name="create_trip_new_event">New event</string>
+    <string name="event_name">Event name:</string>
+    <string name="starts_at">Start time:</string>
+    <string name="cost">Cost:</string>
+    <string name="end_time">End time:</string>
+    <string name="from">From:</string>
+    <string name="to">To:</string>
 </resources>
