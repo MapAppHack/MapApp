@@ -6,12 +6,11 @@
     android:layout_height="match_parent"
     tools:context="com.hackathon2018.androidacademytlv.mapapp.TripListActivity">
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/trip_list_recycler_view"
-        android:scrollbars="vertical"
+    <TextView
+        android:id="@+id/trip_view_holder"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
-
+        android:layout_height="66dp"
+        android:layout_margin="10dp"
+        android:padding="10dp" />
 
 </LinearLayout>
-

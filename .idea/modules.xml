@@ -3,8 +3,9 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://C:\Users\Dubi\AndroidAcademyTLV\Hackathon2018\TravelApp\Hack0318.iml" filepath="C:\Users\Dubi\AndroidAcademyTLV\Hackathon2018\TravelApp\Hack0318.iml" />
+      <module fileurl="file://$PROJECT_DIR$/MapApp.iml" filepath="$PROJECT_DIR$/MapApp.iml" />
       <module fileurl="file://I:\views\Hack0318\MapApp.iml" filepath="I:\views\Hack0318\MapApp.iml" />
-      <module fileurl="file://$PROJECT_DIR$/TravelApp.iml" filepath="$PROJECT_DIR$/TravelApp.iml" />
+      <module fileurl="file://C:\Users\esther.nativ\MapApp\TravelApp.iml" filepath="C:\Users\esther.nativ\MapApp\TravelApp.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://C:\Users\Dubi\AndroidAcademyTLV\Hackathon2018\TravelApp\app\app.iml" filepath="C:\Users\Dubi\AndroidAcademyTLV\Hackathon2018\TravelApp\app\app.iml" />
     </modules>
