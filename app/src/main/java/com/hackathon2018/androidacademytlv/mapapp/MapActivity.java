@@ -27,7 +27,7 @@ import java.util.List;
 
 public class MapActivity extends FragmentActivity implements OnMapReadyCallback {
     private GoogleMap mMap;
-    private TripEvent mEvent;
+    private Trip mEvent;
     private int mCounter = 1;
     private PolylineOptions mPolylineOptions = new PolylineOptions().width(5).color(Color.RED);
     LatLngBounds.Builder boundsBuilder = new LatLngBounds.Builder();
@@ -46,15 +46,13 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
-//        getTripsEvents(mEvent);
 
         Intent intentThatStartedThisActivity = getIntent();
 
-        if (intentThatStartedThisActivity.hasExtra(TripEvent.EXTRA_KEY)) {
-            mEvent =  (TripEvent) intentThatStartedThisActivity.getSerializableExtra(TripEvent.EXTRA_KEY);
+        if (intentThatStartedThisActivity.hasExtra(Trip.EXTRA_KEY)) {
+            mEvent =  (Trip) intentThatStartedThisActivity.getSerializableExtra(Trip.EXTRA_KEY);
+            getTripsEvents(mEvent);
         }
-
-        drawEventsOnMap(mEvent);
     }
 
     private void drawEventsOnMap(TripEvent event) {
@@ -96,22 +94,25 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
         mCounter++;
     }
 
-//    private void getTripsEvents(TripEvent mEvent) {
+    private void getTripsEvents(Trip trip) {
+
+
+        final TripsDataLayer dataLayer = TripsDataLayer.getInstance();
+        String tripId = trip.id;
+        dataLayer.getEventsByTrips(tripId, new IItemAddedCallback<TripEvent>() {
+            @Override
+            public void onItemAdded(TripEvent item) {
+                drawEventsOnMap(item);
+            }
+        });
+
 //
 //
-////        final TripsDataLayer dataLayer = TripsDataLayer.getInstance();
-////        dataLayer.getTripsByUser("user1", new IItemAddedCallback<Trip>() {
-////            @Override
-////            public void onItemAdded(Trip item) {
-////                String tripId = item.id;
-////                dataLayer.getEventsByTrips(tripId, new IItemAddedCallback<TripEvent>() {
-////                    @Override
-////                    public void onItemAdded(TripEvent item) {
-////                        drawEventsOnMap(item);
-////                    }
-////                });
-////                return;
-////            }
-////        });
-//    }
+//        dataLayer.getTripsByUser("user1", new IItemAddedCallback<Trip>() {
+//            @Override
+//            public void onItemAdded(Trip item) {
+//                return;
+//            }
+//        });
+    }
 }
