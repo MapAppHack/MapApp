@@ -3,4 +3,6 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+    <color name="create_trip_all_background">#50000080</color>
+    <color name="create_trip_edit_background">#50FFFFFF</color>
 </resources>
